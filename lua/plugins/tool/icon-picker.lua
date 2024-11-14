@@ -6,7 +6,7 @@ return {
     picker.setup {
       disable_legacy_commands = true
     }
-    
+
     local map = vim.keymap.set
     local opts = { noremap = true, silent = true }
     map('n', '<leader>ic', '<CMD>IconPickerNormal nerd_font<CR>', opts)

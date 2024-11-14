@@ -11,6 +11,7 @@ o.number = true
 o.shiftwidth = 2
 o.expandtab = true
 o.autoindent = true
+o.smartindent = true
 
 -- 防止折叠行
 o.wrap = false

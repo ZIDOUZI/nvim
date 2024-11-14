@@ -1,5 +1,6 @@
 return {
   'echasnovski/mini.nvim',
+  cond = false,
   config = function()
     local animate = require('mini.animate')
     local timing =  animate.gen_timing.cubic { duration =  150, unit = 'total' }

@@ -4,6 +4,11 @@ return {
     -- TODO: when use vscode, disable this and make `<leader>e` to vscode file panel, etc.
     return true
   end,
+  init = function ()
+    -- see https://github.com/nvim-tree/nvim-tree.lua#install
+    vim.g.loaded_netrw = 1
+    vim.g.loaded_netrwPlugin = 1
+  end,
   config = function()
     require('utils.natural_compare')
     require('nvim-tree').setup {
@@ -17,14 +22,14 @@ return {
       --   enable = true,
       --   update_cwd = true,
       -- },
-      -- sort_by = function (nodes) -- TODO: sorter can't put folder at top. need fix
-      --   table.sort(nodes, function (left, right)
-      --     if left.type == "directory" and right.type ~= "directory" then
-      --
-      --     end
-      --     return left.name:lower():natural_compare(right.name:lower())
-      --   end)
-      -- end,
+      sort_by = function (nodes) -- TODO: sorter can't put folder at top. need fix
+        table.sort(nodes, function (left, right)
+          if (left.type == "file") ~= (right.type == "file") then
+            return right.type == "file"
+          end
+          return left.name:lower():natural_compare(right.name:lower())
+        end)
+      end,
       diagnostics = {
         enable = true,
         show_on_dirs = true,

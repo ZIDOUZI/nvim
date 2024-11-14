@@ -1,1 +1,4 @@
-return 'Neur1n/neuims'
+return {
+  'Neur1n/neuims',
+  enabled = false
+}

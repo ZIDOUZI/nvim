@@ -85,6 +85,7 @@ end
 
 return {
   'goolord/alpha-nvim',
+  lazy = false,
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
     local db = require('alpha.themes.dashboard')
@@ -139,9 +140,9 @@ return {
     vim.keymap.set('n', "<leader>a", "<CMD>Alpha<CR>")
     local alpha = require('alpha')
     alpha.setup(db.config)
-    local group_id = vim.api.nvim_create_augroup('alpha_start', { clear = true })
     -- FIX: in alpha.lua L786, alpha pass true to function `start`, which cause alpha won't open
     -- when nvim have passed any argument. this is what we don't want. we re-resigter this autocmd.
+    local group_id = vim.api.nvim_create_augroup('alpha_start', { clear = true })
     vim.api.nvim_create_autocmd('UIEnter', {
       group = group_id,
       pattern = "*",
@@ -149,15 +150,20 @@ return {
       callback = function ()
         local args = vim.fn.argv()
         ---@cast args table
-        vim.print(args)
-        if #args == 1 and args[1]:match('NvimTree') then
-          vim.print('Wrong type of NvimTree! will show alpha.')
-        else
-          for _, arg in ipairs(args) do
-            if vim.fn.isdirectory(arg) == 0 then return end
+        local hasdir = false
+        for i = 1, #args do
+          local path = vim.fn.expand(args[i])
+          if vim.fn.isdirectory(path) == 1 then
+            if not hasdir then
+              vim.fn.chdir(path)
+              hasdir = true
+            end
+            vim.api.nvim_buf_delete(i, { force = true })
           end
         end
-        alpha.start(false, db.config)
+        if hasdir then
+          alpha.start(false, db.config)
+        end
       end
     })
   end

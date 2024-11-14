@@ -2,10 +2,6 @@ return {
   'jbyuki/nabla.nvim',
   cond = false,
   ft = { 'markdown', 'tex' },
-  keys = {
-    { '<C-K>' },
-    { 'K' },
-  },
   config = function()
     local nabla = require('nabla')
     nabla.enable_virt {

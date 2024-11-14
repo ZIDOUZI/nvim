@@ -21,6 +21,8 @@ map('n', '<leader>sh', '<C-w>s')
 map('n', '<leader>nh', ':nohl<CR>')
 map('n', '<C-L>', ':bnext<CR>')
 map('n', '<C-H>', ':bprevious<CR>')
+local open = require('utils.open')
+map('n', 'gx', open.open_cword)
 
 -- bug of treesitter
 -- map('c', 'wqa<CR>', 'wqa!<CR>')
