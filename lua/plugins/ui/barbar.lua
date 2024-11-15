@@ -1,5 +1,6 @@
 return {
   'romgrk/barbar.nvim',
+  cond = false,
   dependencies = {
     'lewis6991/gitsigns.nvim',
     'nvim-tree/nvim-web-devicons'
@@ -10,7 +11,7 @@ return {
       pattern = 'apprentice',
       callback = function()
         vim.api.nvim_set_hl(0, 'BufferCurrentSign', { fg = '#1B1D2B' })
-        vim.api.nvim_set_hl(0, 'BufferCurrentSignRight', { fg = '#1B1D2B' })
+        vim.api.nvim_set_hl(0, 'BufferCurrentSignRight', { fg = '#1B1D2B', bg = '#FFFFFF' })
         vim.api.nvim_set_hl(0, 'BufferVisibleSign', { fg = '#2C3048' })
         vim.api.nvim_set_hl(0, 'BufferVisibleSignRight', { fg = '#2C3048' })
 

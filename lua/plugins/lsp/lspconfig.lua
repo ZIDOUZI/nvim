@@ -1,17 +1,6 @@
 return {
   'neovim/nvim-lspconfig',
   dependencies = {
-    {
-      'folke/neodev.nvim',
-      opts = {
-        lspconfig = true,
-        override = function(_, library)
-          library.enabled = true
-          library.plugins = true
-          library.types = true
-        end,
-      }
-    },
     'lukas-reineke/lsp-format.nvim',
     'b0o/schemastore.nvim'
   },

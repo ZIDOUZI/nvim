@@ -1,6 +1,6 @@
 return {
   'akinsho/bufferline.nvim',
-  cond = false,
+  event = "VeryLazy",
   opts = {
     options = {
       diagnostics = 'nvim_lsp',
@@ -32,12 +32,12 @@ return {
           text = nil,
         }
       },
-      highlights = {
-        background = {
-          fg = 'transparent',
-          bg = 'transparent',
-        },
-      },
+      -- highlights = {
+      --   background = {
+      --     bg = 'transparent',
+      --   },
+      -- },
+      always_show_bufferline = false,
       separator_style = 'slant',
       custom_areas = {
         right = function ()

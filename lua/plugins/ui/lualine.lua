@@ -44,6 +44,7 @@ local format_symbol = { unix = 'LF', dos = 'CRLF', mac = 'CR' }
 return {
   'nvim-lualine/lualine.nvim',
   -- cond = false,
+  event = "VeryLazy",
   opts = {
     options = {
       icons_enabled = true,
