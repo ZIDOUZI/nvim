@@ -7,4 +7,5 @@ require('core.options')
 require('core.keymaps')
 require('core.plugins')
 
+vim.cmd [[hi Comment guifg=black]]
 

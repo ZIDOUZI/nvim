@@ -1,9 +1,12 @@
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+if vim.g.vscode ~= nil then
+  local vscode = require("vscode")
+  vim.keymap.set("n", "<leader>e", function () vscode.action("workbench.action.toggleSidebarVisibility") end)
+end
+
 return {
   'nvim-tree/nvim-tree.lua',
-  cond = function ()
-    -- TODO: when use vscode, disable this and make `<leader>e` to vscode file panel, etc.
-    return true
-  end,
   init = function ()
     -- see https://github.com/nvim-tree/nvim-tree.lua#install
     vim.g.loaded_netrw = 1
