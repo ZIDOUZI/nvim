@@ -23,6 +23,9 @@ end
 
 require('lazy').setup {
   spec = plugins,
+  defaults = {
+    cond = vim.g.vscode == nil
+  },
   ui = {
     border = "rounded",
     pills = true,

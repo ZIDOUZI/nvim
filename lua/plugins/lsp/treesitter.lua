@@ -2,6 +2,7 @@
 return {
   'nvim-treesitter/nvim-treesitter',
   build = ':TSUpdate',
+  cond = true,
   config = function()
     require('nvim-treesitter.install').prefer_git = false
     local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
